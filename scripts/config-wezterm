@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+config-wezterm() {
+	dir="$(dirname "$(dirname "$(realpath "$0")")")/config/wezterm"
+	target=~/.wezterm.lua
+
+	if [[ $OSTYPE =~ ^msys ]]; then
+		target="/c/users/$user"
+		echo "Copying $dir/wezterm.lua -> $target/.wezterm.lua"
+		cp "$dir/wezterm.lua" "$target/.wezterm.lua"
+		return
+	fi
+
+	if [[ $(uname -r) =~ microsoft ]]; then
+		user=$(powershell.exe -Command 'Get-Process -Name wsl | Select-Object Id, ProcessName, @{Name="User";Expression={(Get-WmiObject Win32_Process -Filter "ProcessId=$($_.Id)").GetOwner().User}}' | grep wsl | head -1 | awk '{print $3}')
+		target="/mnt/c/users/$user"
+		mkdir -p "$target"
+		echo "Copying $dir/wezterm.lua -> $target/.wezterm.lua"
+		cp "$dir/wezterm.lua" "$target/.wezterm.lua"
+		return
+	fi
+
+	echo "$target/.wezterm.lua -> $dir/wezterm.lua"
+	ln -sfn "$dir/wezterm.lua" "$target/.wezterm.lua"
+
+}
+
+config-wezterm
