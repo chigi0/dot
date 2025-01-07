@@ -4,7 +4,8 @@ local mux = wezterm.mux
 return {
   window_close_confirmation = 'NeverPrompt',
   color_scheme = 'Gruvbox Material (Gogh)',
-  font_size = 16,
+  font = wezterm.font('Ubuntu Mono'),
+  font_size = 12,
 
   colors = {
     cursor_bg = '#928374',
