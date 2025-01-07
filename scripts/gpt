@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Path to the file containing the OpenAI API token
+TOKEN_FILE="/home/irakli/.config/gpt/key"
+
+# Check if the token file exists
+if [[ ! -f "$TOKEN_FILE" ]]; then
+  echo "Error: Token file '$TOKEN_FILE' not found!"
+  exit 1
+fi
+
+# Read the token from the file
+API_TOKEN=$(cat "$TOKEN_FILE" | tr -d '\n')
+
+# Check if the token is empty
+if [[ -z "$API_TOKEN" ]]; then
+  echo "Error: Token file is empty!"
+  exit 1
+fi
+
+# Export the token as an environment variable for mods to use
+export OPENAI_API_KEY="$API_TOKEN"
+
+# Run the mods program with the token
+mods --continue-last "$@"
+
+# Optionally unset the environment variable after execution
+unset OPENAI_API_KEY
