@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Path to the file containing the OpenAI API token
-TOKEN_FILE="/home/irakli/.config/gpt/key"
+TOKEN_FILE="$HOME/.config/gpt/key"
 
 # Check if the token file exists
 if [[ ! -f "$TOKEN_FILE" ]]; then
