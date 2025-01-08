@@ -5,7 +5,7 @@ return {
   window_close_confirmation = 'NeverPrompt',
   color_scheme = 'Gruvbox Material (Gogh)',
   font = wezterm.font('Ubuntu Mono'),
-  font_size = 12,
+  font_size = 14,
 
   colors = {
     cursor_bg = '#928374',

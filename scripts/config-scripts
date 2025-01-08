@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 dir=$(dirname "$(realpath "$0")")
 mkdir -p ~/.local/bin
