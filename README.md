@@ -14,3 +14,4 @@ This license makes you safe to use anything in here pretty much anywhere—inclu
 ## Modifications
 
 Install apps, link configs from "config" directory and put scripts into `.local/bin`.
+To make vim colors, shellchec and shfmt work on wezterm install plugins (:PlugInstall)
