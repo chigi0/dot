@@ -4,8 +4,8 @@ config-wezterm() {
 	dir="$(dirname "$(dirname "$(realpath "$0")")")/config/wezterm"
 	target=~/.wezterm.lua
 
-	echo "$target/.wezterm.lua -> $dir/wezterm.lua"
-	ln -sfn "$dir/wezterm.lua" "$target/.wezterm.lua"
+	echo "$target -> $dir/wezterm.lua"
+	ln -sfn "$dir/wezterm.lua" "$target"
 
 }
 
