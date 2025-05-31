@@ -21,8 +21,12 @@ fi
 # Export the token as an environment variable for mods to use
 export OPENAI_API_KEY="$API_TOKEN"
 
-# Run the mods program with the token
-/usr/bin/mods --continue-last "$@"
+# Run the mods program with the OpenAI API, ChatGPT model, and titled conversation
+if [[ -f "$HOME/.local/share/mods/gpt.json" ]]; then
+    /usr/bin/mods -a openai-original -m gpt-4o-mini --continue='gpt' "$@"
+else
+    /usr/bin/mods -a openai-original -m gpt-4o-mini --title='gpt' "$@"
+fi
 
 # Optionally unset the environment variable after execution
 unset OPENAI_API_KEY
